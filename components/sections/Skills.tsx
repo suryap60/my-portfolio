@@ -60,14 +60,14 @@ export default function Skills() {
 
       <div className="relative z-10">
         {/* Section Heading */}
-        <div className="px-6 mb-20">
+        {/* <div className="px-6 mb-20">
           <h2 className="text-sm font-mono text-orange-500 tracking-[0.4em] uppercase mb-4">
             Technical Stack
           </h2>
           <h3 className="text-5xl md:text-8xl font-bold tracking-tighter leading-none">
             SKILLS
           </h3>
-        </div>
+        </div> */}
 
         {/* Horizontal Moving Rows */}
         <div className="flex flex-col gap-8 md:gap-12">
@@ -81,7 +81,7 @@ export default function Skills() {
               }}
             >
               <div
-                ref={(el) => (rowsRef.current[index] = el)}
+                ref={(el) => { rowsRef.current[index] = el; }}
                 className="flex gap-8 md:gap-16 items-center"
               >
                 {row.skills.map((skill, idx) => (

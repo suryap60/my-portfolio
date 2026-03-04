@@ -3,6 +3,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import ExperienceSection from "@/components/sections/Experiance";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
+import Contact from "@/components/sections/Contact";
 import Image from "next/image";
 
 export default function Home() {
@@ -14,8 +15,13 @@ export default function Home() {
       </section>
       
       {/* About slides over the top because it's later in the DOM and has a higher z-index */}
-      <section className="relative z-10">
+      <section className="relative z-10" id="about">
         <AboutSection />
+      </section>
+
+      {/* Skills Section */}
+      <section className="relative z-10">
+        <Skills />
       </section>
 
       {/* Experience Section */}
@@ -24,13 +30,15 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="relative z-10">
+      <section className="relative z-10" id="projects">
         <Projects />
       </section>
 
-      {/* Skills Section */}
-      <section className="relative z-10">
-        <Skills />
+      
+
+      {/* Contact Section */}
+      <section className="relative z-10" id="contact">
+        <Contact />
       </section>
     </main>
   );

@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -15,6 +16,7 @@ interface Project {
   description: string;
   image: string;
   video?: string;
+  link: string;
 }
 
 const projects: Project[] = [
@@ -23,64 +25,72 @@ const projects: Project[] = [
     title: "NEOCARZ",
     category: "Car Rental Platform",
     description: "Built a scalable React-Next frontend for a Saudi-based vehicle rental system with search, filtering, and booking flows.",
-    image: "/assets/images/projects/neocarz.png",
-    video: "/assets/videos/neocarz.mp4"
+    image: "/assets/images/projects/neo.png",
+    link:'https://neocarz.com/'
   },
   {
     id: 2,
     title: "MENU STARTER",
     category: "Food Ordering Platform",
     description: "Developed Admin and Customer web platforms for a multi-restaurant food ordering system with category-based browsing.",
-    image: "/assets/images/projects/menustarter.png"
+    image: "/assets/images/projects/menustarter.webp",
+    link:'https://customer.cloudkitchen.brandstrek.com/'
   },
   {
     id: 3,
     title: "KAFFAWAY",
     category: "Coffee E-Commerce",
     description: "Online coffee e-commerce platform with Redux-based state management for products, cart, and wishlist.",
-    image: "/assets/images/projects/kaffaway.png"
+    image: "/assets/images/projects/kaffaway.png",
+    link:'https://kaffaway.com/'
   },
   {
     id: 4,
     title: "WORKEX CRM",
     category: "CRM System",
     description: "Designed and developed CRM, HRM, and Project Management modules using React + TypeScript.",
-    image: "/assets/images/projects/workhex.png"
+    image: "/assets/images/projects/workhex.png",
+    link:'https://app.workhex.com/'
   },
   {
     id: 5,
     title: "ISME CRM",
     category: "Management System",
     description: "Delivered responsive dashboards for CRM, HRM, and user management modules with REST API integration.",
-    image: "/assets/images/projects/isme.png"
+    image: "/assets/images/projects/isme.png",
+    link:'https://ismeedu.org/'
   },
   {
     id: 6,
     title: "XCHOOL",
     category: "School Management",
     description: "Developed portals for students, parents, teachers, and administrators with role-based access control.",
-    image: "/assets/images/projects/xchools.png"
+    image: "/assets/images/projects/xchools.png",
+    link:'https://xchools.in/'
   },
   {
     id: 7,
     title: "BIN ABAD",
     category: "Corporate Website",
     description: "Built a Figma-accurate Next.js UI with responsive layouts and GSAP animations for Qatar-based company.",
-    image: "/assets/images/projects/bin-abad.jpg"
+    image: "/assets/images/projects/binabad.png",
+    link:'https://binbad.vercel.app/'
   },
   {
     id: 8,
     title: "BRANDSTREK",
     category: "Marketing Website",
     description: "Company's main marketing website using React + Next.js, optimized for SEO with server-side rendering.",
-    image: "/assets/images/projects/brandstrek.jpg"
+    image: "/assets/images/projects/brandstrek.png",
+    link:'https://www.brandstrek.com/'
   },
   {
     id: 9,
     title: "ISTHRA RESORT",
     category: "Booking System",
     description: "Resort booking platform with room categories, photo galleries, amenities display, and inquiry forms.",
-    image: "/assets/images/projects/isthra.jpg"
+    image: "/assets/images/projects/isthra.png",
+    link:'https://www.isthra.com/'
   }
 ];
 
@@ -118,17 +128,17 @@ export default function Projects() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative bg-black">
-      <div className="h-screen overflow-hidden flex flex-col">
+    <div ref={containerRef} className="relative bg-black ">
+      <div className="h-screen overflow-hidden flex flex-col ">
         {/* Header */}
-        <div className="flex-shrink-0 bg-black px-8 py-8 z-10">
-          <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-none text-white">
-            PROJECTS
+        <div className="px-6 lg:px-16 mb-20">
+          <h2 className="text-sm font-mono text-orange-500 tracking-[0.4em] uppercase mb-4">
+            Live Builds
           </h2>
-          <p className="text-gray-400 text-base mt-3 max-w-2xl">
-            A showcase of innovative solutions and digital experiences
-          </p>
-        </div>
+          <h3 className="text-5xl md:text-8xl font-bold tracking-tighter leading-none text-white">
+            PROJECTS
+          </h3>
+        </div> 
 
         {/* Horizontal Scrolling Cards */}
         <div className="flex-1 flex items-center overflow-hidden py-8">
@@ -137,7 +147,8 @@ export default function Projects() {
             className="flex gap-8 px-8"
           >
             {projects.map((project) => (
-              <div
+              <Link href={project.link} target="_blank" key={project.id}>
+                <div
                 key={project.id}
                 className="flex-shrink-0 relative rounded-xl overflow-hidden group"
                 style={{
@@ -172,7 +183,6 @@ export default function Projects() {
                     />
                   )}
                   
-                  {/* Dark Overlay */}
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300" />
                 </div>
 
@@ -186,7 +196,7 @@ export default function Projects() {
                 </div>
 
                 {/* Center Content Card */}
-                <div className="absolute inset-0 flex items-center justify-center p-8">
+                {/* <div className="absolute inset-0 flex items-center justify-center p-8">
                   <div className="bg-white/95 backdrop-blur-md rounded-2xl p-8 max-w-md transform group-hover:scale-105 transition-transform duration-300 shadow-2xl">
                     <h4 className="text-2xl font-bold text-black mb-3">
                       {project.category}
@@ -195,7 +205,6 @@ export default function Projects() {
                       {project.description}
                     </p>
                     
-                    {/* Video Icon/Indicator - Show on all cards */}
                     <div className="flex items-center gap-2 text-black mb-4">
                       <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center">
                         <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -211,11 +220,12 @@ export default function Projects() {
                       View Details →
                     </button>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Border */}
                 <div className="absolute inset-0 rounded-xl border-2 border-white/20 pointer-events-none" />
               </div>
+              </Link>
             ))}
           </div>
         </div>

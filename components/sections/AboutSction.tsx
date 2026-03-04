@@ -5,43 +5,29 @@ export default function AboutSection() {
   const textRef = useRef<HTMLParagraphElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [wordProgress, setWordProgress] = useState<number[]>([]);
-  const [borderRadius, setBorderRadius] = useState(0);
 
   const text = "Bridging the gap between modern design and technical excellence. As a React Developer, I've spent my career building real-time platforms and scalable front-end solutions for global markets. I combine a deep mastery of the React ecosystem with an agile mindset, utilizing Generative AI tools and Redux to accelerate delivery and optimize state management. I thrive at the intersection of clean architecture and innovative user experience.";
   
   const words = text.split(" ");
 
   useEffect(() => {
-    // Initialize all words as gray (0 progress)
-    // setWordProgress(new Array(words.length).fill(0));
-
     const handleScroll = () => {
       if (!textRef.current || !sectionRef.current) return;
 
       const rect = textRef.current.getBoundingClientRect();
-      const sectionRect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // Calculate border radius reveal progress based on section position
-      // Starts forming when section enters viewport
-      const radiusProgress = Math.max(0, Math.min(1, 
-        (windowHeight - sectionRect.top) / (windowHeight * 0.6)
-      ));
-      
-      // Interpolate border radius from 0 to 50% (rounded-full effect)
-      const maxRadius = 50; // 50% for full rounded effect
-      setBorderRadius(radiusProgress * maxRadius);
-
-      // Calculate how much of the text is visible
+      // Calculate scroll progress (0 to 1)
+      // starts when top of text enters bottom of screen, ends when bottom leaves top
       const scrollProgress = Math.max(0, Math.min(1, 
-        (windowHeight - rect.top) / (windowHeight + rect.height)
+        (windowHeight - rect.top) / (windowHeight + rect.height * 0.5)
       ));
 
-      // Update each word's progress based on scroll
       const newProgress = words.map((_, index) => {
         const wordPosition = index / words.length;
+        // The * 5 multiplier makes the transition "snappier" per word
         const wordProgress = Math.max(0, Math.min(1, 
-          (scrollProgress - wordPosition) * words.length
+          (scrollProgress - wordPosition) * 5
         ));
         return wordProgress;
       });
@@ -50,7 +36,7 @@ export default function AboutSection() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
+    handleScroll(); 
     
     return () => window.removeEventListener("scroll", handleScroll);
   }, [words.length]);
@@ -58,34 +44,34 @@ export default function AboutSection() {
   return (
     <div 
       ref={sectionRef} 
-      className="relative min-h-screen bg-black text-white overflow-hidden"
-      // style={{
-      //   borderTopLeftRadius: `${borderRadius}%`,
-      //   borderTopRightRadius: `${borderRadius}%`,
-      //   transition: "border-radius 0.3s ease-out"
-      // }}
+      className="relative min-h-screen bg-black text-white overflow-hidden flex items-center justify-center"
     >
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20">
+      <div className="max-w-6xl mx-auto px-6 py-24">
         <p 
           ref={textRef}
-          className="max-w-3xl text-center text-2xl lg:text-3xl leading-relaxed font-medium font-syne"
+          className="text-4xl md:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-center font-bold"
+          style={{ 
+            fontFamily: '"Young Serif", "Young Serif Placeholder", serif',
+          }}
         >
           {words.map((word, index) => {
             const progress = wordProgress[index] || 0;
-            // Interpolate from gray (107, 114, 128) to white (255, 255, 255)
-            const r = Math.round(107 + (255 - 107) * progress);
-            const g = Math.round(114 + (255 - 114) * progress);
-            const b = Math.round(128 + (255 - 128) * progress);
+            // Interpolate from zinc-800 to white
+            const r = Math.round(39 + (255 - 39) * progress);
+            const g = Math.round(39 + (255 - 39) * progress);
+            const b = Math.round(42 + (255 - 42) * progress);
             
             return (
               <span
                 key={index}
+                className="inline-block"
                 style={{
                   color: `rgb(${r}, ${g}, ${b})`,
-                  transition: "color 0.3s ease-out"
+                  transition: "color 0.2s ease-out",
+                  marginRight: '0.25em'
                 }}
               >
-                {word}{" "}
+                {word}
               </span>
             );
           })}
