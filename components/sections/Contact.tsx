@@ -101,7 +101,7 @@ export default function Contact() {
               <div className="form-field group relative">
                 <textarea
                   name="message"
-                  placeholder="Tell me about your project"
+                  placeholder="Message"
                   rows={4}
                   className="w-full bg-transparent border-b border-zinc-800 py-6 text-2xl outline-none focus:border-orange-500 transition-colors placeholder:text-zinc-700 resize-none"
                   onChange={handleChange}
@@ -111,7 +111,7 @@ export default function Contact() {
 
               <div className="form-field pt-6">
                 <button className="group relative overflow-hidden bg-orange-500 px-12 py-6 rounded-full text-black font-bold uppercase tracking-widest transition-all hover:pr-16">
-                  <span className="relative z-10">Send Discovery Call</span>
+                  <span className="relative z-10 text-white">Send </span>
                   <span className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">
                     →
                   </span>
