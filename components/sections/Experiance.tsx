@@ -90,15 +90,17 @@ export default function ExperienceSection() {
 
         <div className="space-y-40 md:space-y-64 px-4 md:px-0">
           {experiences.map((exp, index) => (
-            <div
-              key={exp.id}
-              ref={(el) => {
-                itemsRef.current[index] = el;
-              }}
-              className={`relative flex items-center justify-between w-full ${
-                index % 2 === 0 ? "md:flex-row text-right" : "md:flex-row-reverse text-left"
-              } flex-col`}
-            >
+  <div
+    key={exp.id}
+    ref={(el) => {
+      itemsRef.current[index] = el;
+    }}
+    className={`relative flex items-center justify-between w-full ${
+      index % 2 === 0
+        ? "md:flex-row text-right"
+        : "md:flex-row-reverse text-left"
+    } flex-col`}
+  >
               {/* Content Side */}
               <div className="w-full md:w-[44%]">
                 {/* <span className="text-orange-500 font-mono text-sm tracking-widest uppercase">
