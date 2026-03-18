@@ -70,6 +70,13 @@ export default function Contact() {
                   suryp6061@gmail.com
                 </a>
               </div>
+
+              {/* <div className="reveal-text">
+                <p className="text-zinc-500 uppercase text-xs tracking-widest mb-2">Phone</p>
+               <a href="tel:8136873866" className="text-2xl hover:text-orange-500 transition-colors">
+                  8136873866
+                </a>
+              </div> */}
             </div>
           </div>
 
