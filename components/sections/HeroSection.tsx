@@ -72,7 +72,7 @@ export default function HeroSection() {
       {/* 3. LAYER: Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-50 flex justify-between items-center p-6 md:p-10">
         <div className="nav-item font-black text-3xl tracking-tighter">
-          S
+          Surya
         </div>
         
         <div className="flex items-end gap-12">

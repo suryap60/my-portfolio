@@ -59,7 +59,7 @@ export default function Contact() {
                 Connect
               </h2>
               <h1 className="reveal-text text-6xl md:text-8xl font-bold leading-none tracking-tighter">
-                LET&Apos;S <br />TALK.
+                LET&apos;S <br />TALK.
               </h1>
             </div>
 

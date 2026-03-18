@@ -45,7 +45,7 @@ export default function Skills() {
   return (
     <div 
       ref={containerRef} 
-      className="relative min-h-screen bg-black text-white py-32 overflow-hidden isolate"
+      className="relative bg-black text-white py-32 overflow-hidden isolate"
     >
       {/* Background Grid */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">

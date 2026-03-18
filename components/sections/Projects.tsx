@@ -121,6 +121,7 @@ export default function Projects() {
       }
     });
 
+
     return () => {
       scrollTween.kill();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
